@@ -1,0 +1,72 @@
+#include <iostream>
+#include <string>
+using namespace std;
+#include<iomanip>
+
+struct s {
+	int index;
+	string name;
+	string model;
+	int price;
+};
+
+void out(s*A,int v)
+{
+	cout << setw(5)<<"INDEX" << setw(15) << "NAME" << setw(10) << "MODEL" << setw(8) << "PRICE" << endl;
+	for (int i = 0; i < v; i++)
+	{
+		cout<< setw(5) << A[i].index << setw(15) << A[i].name << setw(10) << A[i].model << setw(8) << A[i].price;
+		cout << endl;
+	}
+}
+
+void in(s*A,int d)
+{
+	
+	for (int i = 0; i < d; i++)
+	{
+		A[i].index = i+1;
+		cin.ignore();
+
+		cout << "Enter name of " << i+1 << " car" << endl;
+		getline(cin, A[i].name);
+
+		cout << "Enter model of " << i+1 << " car" << endl;
+		getline(cin, A[i].model);
+
+		cout << "Enter price of " << i+1 << " car" << endl;
+		cin >> A[i].price;
+		
+	}
+
+}
+int main()
+{
+	char ch;
+	int d;
+	cout << "Enter no. of Cars" << endl;
+	cin >> d;
+	s* A = new s[d];
+	
+		cout << "Enter I for input " << endl;
+		cin >> ch;
+		switch (ch)
+		{
+		case 'I':
+		case'i':
+		{
+			in(A, d);
+		}
+		break;
+		}
+		cout << "Enter O for output" << endl;
+		cin >> ch;
+		switch(ch){
+		case'O':
+		case'o':
+		{
+			out(A, d);
+		}
+		}
+	
+}
